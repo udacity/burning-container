@@ -1,0 +1,72 @@
+(page "index.html"
+  (:require
+    [clojure.string :as str]
+    [burning-container.rpc :as rpc]
+    [goog.i18n.DateTimeFormat]))
+
+(rpc/init)
+
+(defn format-short-id [container-id]
+  (apply str (take 12 container-id)))
+
+(defn format-port [{:keys [IP PrivatePort PublicPort Type]}]
+  (str IP ":" PrivatePort "->" PublicPort "/" Type))
+
+(defn format-ports [ports]
+  (str/join "," (map format-port ports)))
+
+(defn format-epoch-ms [epoch-date-in-ms]
+  (.format (goog.i18n.DateTimeFormat. "yyyy/MM/dd HH:mm:ss")
+           (js/Date. (* 1000 (or epoch-date-in-ms 0)))))
+
+(defn format-docker-name [container]
+  (apply str (rest (first (:Names container)))))
+
+(html
+  (head
+    (link :href "app.css" :rel "stylesheet"))
+  (body
+    (div
+      :id "error"
+      :click rpc/clear-error!
+      :slide-toggle rpc/error
+      :css {:display "none"}
+      (text "~{rpc/error-message}"))
+    (div :id "form-div"
+      (div :id "form-main"
+        (form :class "form"
+          (label "Sample Rate (Hz)")
+          (input
+            :class "sample-input"
+            :placeholder "Hz"
+            :type "text"
+            :value rpc/sample-rate
+            :change #(reset! rpc/sample-rate @%))
+          (label "Duration (seconds)")
+          (input
+            :class "sample-input"
+            :placeholder "seconds"
+            :type "text"
+            :value rpc/sample-duration
+            :change #(reset! rpc/sample-duration @%)))))
+    (table :id "containers"
+      (thead
+        (tr :id "containers-header"
+          (map th ["Id" "Image" "Command" "Created" "Ports" "Name"])))
+      (tbody
+        (for-tpl [container rpc/container-list]
+          (let [id (cell= (:Id container))]
+            (tr :click #(rpc/sample-container! @id)
+              (td (cell= (format-short-id id)))
+              (td (cell= (:Image container)))
+              (td (cell= (:Command container)))
+              (td (cell= (format-epoch-ms (:Created container))))
+              (td (cell= (format-ports (:Ports container))))
+              (td (cell= (format-docker-name container))))))))
+    (div
+      :id "loading"
+      :fade-toggle (cell= (boolean rpc/loading?))
+      :css {:display "none"}
+      (text "sampling at ~{rpc/sample-rate} Hz for ~{rpc/sample-duration} sec(s)..."))
+    (a :href rpc/image-url
+      (img :src rpc/image-url))))

@@ -1,0 +1,156 @@
+body {
+    margin: 0;
+}
+
+#error {
+  position:     fixed;
+  z-index:      9999;
+  width:        100%;
+  padding:      10px;
+  text-align:   center;
+  color:        white;
+  background:   red;
+  font-weight:  bold; }
+
+#loading {
+  position:     fixed;
+  z-index:      99999;
+  left:         50%;
+  margin-left:  -200px;
+  width:        300px;
+  padding:      10px;
+  text-align:   center;
+  color:        white;
+  background:   orange;
+  font-weight:  bold; }
+
+table a:link {
+	color: #666;
+	font-weight: bold;
+	text-decoration:none;
+}
+table a:visited {
+	color: #999999;
+	font-weight:bold;
+	text-decoration:none;
+}
+table a:active,
+table a:hover {
+	color: #bd5a35;
+	text-decoration:underline;
+}
+table {
+	font-family:Arial, Helvetica, sans-serif;
+	color:#222;
+	font-size:12px;
+	text-shadow: 1px 1px 0px #fff;
+	background:#eaebec;
+	margin:20px;
+  border-collapse: collapse;
+}
+table th {
+	padding:11px 15px 12px 15px;
+	border-top:1px solid #fafafa;
+	border-bottom:1px solid #e0e0e0;
+  font-family: sans-serif;
+	text-align: left;
+	padding-left:10px;
+
+	background: #ededed;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+	background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+}
+table tr {
+	text-align: left;
+  font-family: monospace;
+	padding-left:0px;
+}
+table td:first-child {
+	text-align: left;
+	padding-left:10px;
+}
+table td {
+	padding:10px;
+
+	background: #fafafa;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+	background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
+}
+table tr.even td {
+	background: #f6f6f6;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+	background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+}
+table tr:last-child td {
+	border-bottom:0;
+}
+table tr:hover td {
+	background: #f2f2f2;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+	background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);	
+  cursor: pointer;
+}
+
+
+
+
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+#feedback-page{
+	text-align:center;
+}
+
+#form-main{
+	width:100%;
+	padding-top:0px;
+}
+
+#form-div {
+	background-color:rgba(72,72,72,0.3);
+	padding-left:15px;
+	padding-right:15px;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+
+label {
+  padding: 10px;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.sample-input {
+	color:#3c3c3c;
+	font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+	font-size: 12px;
+	border-radius: 0;
+	line-height: 18px;
+	background-color: #fbfbfb;
+	padding: 3px 3px 3px 3px;
+	width:150px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+  border: 3px solid rgba(0,0,0,0);
+}
+
+.sample-input:focus{
+	background: #fff;
+	box-shadow: 0;
+	border: 3px solid #3498db;
+	color: #3498db;
+	outline: none;
+	padding: 3px 3px 3px 3px;
+}
+
+.focused{
+	color:#30aed6;
+	border:#30aed6 solid 3px;
+}
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+	background-color:white;
+}
