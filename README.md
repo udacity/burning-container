@@ -55,7 +55,7 @@ You can easily deploy this application for free to [Heroku][5].
 
 ## License
 
-Copyright © 2016, **Paul Bauer**
+Copyright © 2016, **Udacity**
 
 [1]: http://boot-clj.com
 [2]: https://github.com/hoplon/castra
